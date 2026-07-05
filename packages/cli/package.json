@@ -70,7 +70,7 @@
     "zod": "^4.4.3"
   },
   "peerDependencies": {
-    "gpt-tokenizer": "^2.0.0"
+    "gpt-tokenizer": "^3.4.0"
   },
   "peerDependenciesMeta": {
     "@astryxdesign/svelte": {
@@ -85,6 +85,6 @@
     "@astryxdesign/svelte-lab": "workspace:*",
     "@astryxdesign/svelte-vega": "workspace:*",
     "@astryxdesign/tokens": "workspace:*",
-    "gpt-tokenizer": "^2.0.0"
+    "gpt-tokenizer": "^3.4.0"
   }
 }
