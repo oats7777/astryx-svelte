@@ -1,0 +1,57 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+name: CI
+
+on:
+  pull_request:
+    branches: ["main"]
+  merge_group:
+
+permissions: {}
+
+concurrency:
+  group: "ci-${{ github.event.merge_group.head_sha || github.head_ref }}"
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Check Svelte packages
+        run: pnpm check:svelte
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Check repository guardrails
+        run: pnpm check:repo
+
+      - name: Build app surfaces
+        run: |
+          pnpm -F @astryxdesign/svelte-storybook build
+          pnpm -F @astryxdesign/example-svelte-tailwind build
+          pnpm -F @astryxdesign/svelte-docs build
+
+      - name: CLI smoke
+        run: |
+          node packages/cli/bin/astryx.mjs component --list --json
+          node packages/cli/bin/astryx.mjs component Button --json
+          node packages/cli/bin/astryx.mjs docs svelte --dense
+          node packages/cli/bin/astryx.mjs template app-shell --skeleton
+          node packages/cli/bin/astryx.mjs hook useTheme --json
+          node packages/cli/bin/astryx.mjs doctor --json

@@ -1,0 +1,11 @@
+{
+  "name": "@astryxdesign/test-utils",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Shared jsdom setup for Astryx Svelte Vitest suites",
+  "main": "./src/index.ts",
+  "scripts": {},
+  "dependencies": {
+    "@testing-library/jest-dom": "^6.6.0"
+  }
+}

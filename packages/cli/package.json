@@ -1,0 +1,90 @@
+{
+  "name": "@astryxdesign/cli",
+  "version": "0.1.2",
+  "displayName": "CLI",
+  "description": "Scaffold projects, browse templates, generate themes, and get agent-ready docs from the command line.",
+  "author": "Meta Open Source",
+  "license": "MIT",
+  "homepage": "https://github.com/oats7777/astryx-svelte#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oats7777/astryx-svelte.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/oats7777/astryx-svelte/issues"
+  },
+  "keywords": [
+    "astryx",
+    "cli",
+    "design-system",
+    "init",
+    "swizzle",
+    "scaffolding",
+    "theme",
+    "agent-docs"
+  ],
+  "type": "module",
+  "bin": {
+    "astryx": "./bin/astryx.mjs",
+    "cli": "./bin/astryx.mjs"
+  },
+  "exports": {
+    ".": "./bin/astryx.mjs",
+    "./json": {
+      "types": "./src/types/index.d.ts",
+      "import": "./src/lib/parse.mjs"
+    },
+    "./api": {
+      "types": "./src/types/api.d.ts",
+      "import": "./src/api/index.mjs"
+    },
+    "./config": {
+      "types": "./src/types/config.d.ts",
+      "import": "./src/config.mjs"
+    },
+    "./xle": {
+      "types": "./src/lib/xle/browser.d.ts",
+      "import": "./src/lib/xle/browser.mjs"
+    }
+  },
+  "files": [
+    "bin",
+    "src",
+    "!src/**/*.test.mjs",
+    "!src/codemods/transforms/**",
+    "templates",
+    "docs",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "astryx": "node bin/astryx.mjs",
+    "typecheck:template-docs": "tsc --project tsconfig.template-docs.json",
+    "typecheck:json-api": "tsc --project tsconfig.json-api.json && tsc --project tsconfig.api-contract.json"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.5.1",
+    "commander": "^12.1.0",
+    "jiti": "^2.7.0",
+    "jscodeshift": "^17.3.0",
+    "zod": "^4.4.3"
+  },
+  "peerDependencies": {
+    "gpt-tokenizer": "^2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@astryxdesign/svelte": {
+      "optional": true
+    },
+    "@astryxdesign/tokens": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@astryxdesign/svelte": "workspace:*",
+    "@astryxdesign/svelte-lab": "workspace:*",
+    "@astryxdesign/svelte-vega": "workspace:*",
+    "@astryxdesign/tokens": "workspace:*",
+    "gpt-tokenizer": "^2.0.0"
+  }
+}

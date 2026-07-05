@@ -1,0 +1,15 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+
+/**
+ * @file missing-astryx-source.css
+ * @input Negative Tailwind source fixture
+ * @output Fixture that omits Astryx package @source registration
+ * @position Failure QA fixture for apps/example-svelte-tailwind/scripts/check-tailwind-source.mjs
+ */
+
+@import "tailwindcss";
+@import "@astryxdesign/tokens/default.css" layer(astryx-base);
+@import "@astryxdesign/tokens/tailwind-theme.css";
+@import "@astryxdesign/svelte/styles.css";
+
+@source "../src/**/*.{svelte,ts}";

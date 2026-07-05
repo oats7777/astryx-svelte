@@ -1,0 +1,65 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+
+/**
+ * @file Table.css
+ * @input Table DOM classes and Astryx CSS variables
+ * @output Tokenized table, resize, and scroll wrapper styles
+ * @position Colocated styles for Table.svelte
+ */
+
+.astryx-table-wrap {
+  display: grid;
+  gap: var(--spacing-3);
+  overflow-x: auto;
+  position: relative;
+}
+
+.astryx-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--color-text-primary);
+  inline-size: 100%;
+}
+
+.astryx-table caption {
+  color: var(--color-text-secondary);
+  padding-block-end: var(--spacing-2);
+  text-align: start;
+}
+
+.astryx-table th,
+.astryx-table td {
+  background: var(--color-background-surface);
+  border-block-end: var(--border-width) solid var(--color-border);
+  padding: var(--spacing-2) var(--spacing-3);
+  white-space: nowrap;
+}
+
+.astryx-table th {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  position: relative;
+  text-align: start;
+}
+
+.astryx-table th button {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
+.astryx-table__select {
+  inline-size: 44px;
+}
+
+.astryx-table__resize {
+  cursor: col-resize;
+  inset-block: var(--spacing-1);
+  inset-inline-end: 0;
+  inline-size: var(--spacing-2);
+  position: absolute;
+  touch-action: none;
+}

@@ -1,0 +1,147 @@
+{
+  "name": "@astryxdesign/svelte",
+  "version": "0.0.0",
+  "description": "Svelte components for the Astryx design system.",
+  "author": "Meta Open Source",
+  "license": "MIT",
+  "homepage": "https://github.com/oats7777/astryx-svelte#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oats7777/astryx-svelte.git",
+    "directory": "packages/svelte"
+  },
+  "bugs": {
+    "url": "https://github.com/oats7777/astryx-svelte/issues"
+  },
+  "keywords": [
+    "astryx",
+    "design-system",
+    "svelte",
+    "tailwind",
+    "components"
+  ],
+  "type": "module",
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
+    },
+    "./Theme.svelte": {
+      "types": "./dist/theme/Theme.svelte.d.ts",
+      "svelte": "./dist/theme/Theme.svelte"
+    },
+    "./theme": {
+      "types": "./dist/theme/index.d.ts",
+      "svelte": "./dist/theme/index.js"
+    },
+    "./theme/tokens": {
+      "types": "./dist/theme/tokens.d.ts",
+      "svelte": "./dist/theme/tokens.js"
+    },
+    "./tokens": {
+      "types": "./dist/tokens.d.ts",
+      "svelte": "./dist/tokens.js"
+    },
+    "./icon": {
+      "types": "./dist/icon/index.d.ts",
+      "svelte": "./dist/icon/index.js"
+    },
+    "./foundations": {
+      "types": "./dist/foundations/index.d.ts",
+      "svelte": "./dist/foundations/index.js"
+    },
+    "./actions": {
+      "types": "./dist/actions/index.d.ts",
+      "svelte": "./dist/actions/index.js"
+    },
+    "./forms": {
+      "types": "./dist/forms/index.d.ts",
+      "svelte": "./dist/forms/index.js"
+    },
+    "./overlays": {
+      "types": "./dist/overlays/index.d.ts",
+      "svelte": "./dist/overlays/index.js"
+    },
+    "./selection": {
+      "types": "./dist/selection/index.d.ts",
+      "svelte": "./dist/selection/index.js"
+    },
+    "./navigation": {
+      "types": "./dist/navigation/index.d.ts",
+      "svelte": "./dist/navigation/index.js"
+    },
+    "./data-display": {
+      "types": "./dist/data-display/index.d.ts",
+      "svelte": "./dist/data-display/index.js"
+    },
+    "./rich-surfaces": {
+      "types": "./dist/rich-surfaces/index.d.ts",
+      "svelte": "./dist/rich-surfaces/index.js"
+    },
+    "./misc": {
+      "types": "./dist/misc/index.d.ts",
+      "svelte": "./dist/misc/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "svelte": "./dist/utils/index.js"
+    },
+    "./internal/PackageTopologyProbe.svelte": {
+      "types": "./dist/internal/PackageTopologyProbe.svelte.d.ts",
+      "svelte": "./dist/internal/PackageTopologyProbe.svelte"
+    },
+    "./styles.css": {
+      "default": "./dist/styles.css"
+    },
+    "./docs.mjs": "./docs.mjs",
+    "./groups.doc.mjs": "./groups.doc.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.test.*",
+    "!dist/**/*.spec.*",
+    "!dist/**/e2e",
+    "!dist/**/e2e/**",
+    "!dist/**/test-fixtures",
+    "!dist/**/test-fixtures/**",
+    "src",
+    "!src/**/*.test.*",
+    "!src/**/*.spec.*",
+    "!src/**/e2e",
+    "!src/**/e2e/**",
+    "!src/**/test-fixtures",
+    "!src/**/test-fixtures/**",
+    "docs.mjs",
+    "groups.doc.mjs"
+  ],
+  "scripts": {
+    "build": "pnpm run package",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:exports": "node scripts/check-package-exports.mjs",
+    "package": "pnpm run check:exports && svelte-package",
+    "typecheck:docs": "node ../../scripts/check-svelte-docs.mjs .",
+    "test": "node scripts/test.mjs",
+    "test:a11y": "node scripts/test-a11y.mjs",
+    "test:e2e": "playwright test --config playwright.config.ts",
+    "test:ssr": "vitest run --config vite.ssr.config.ts"
+  },
+  "dependencies": {
+    "@astryxdesign/tokens": "workspace:*"
+  },
+  "peerDependencies": {
+    "svelte": ">=5.0.0"
+  },
+  "devDependencies": {
+    "@sveltejs/package": "2.5.8",
+    "@sveltejs/vite-plugin-svelte": "^6.0.0",
+    "svelte": "5.56.4",
+    "svelte-check": "^4.3.0",
+    "typescript": "^6.0.3"
+  }
+}

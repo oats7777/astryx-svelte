@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "description": "Adds a fake current source export so the Svelte port parity guard must report an untracked missing ledger entry.",
+  "addEntries": [
+    {
+      "id": "svelte.package-export:./FixtureMissingExport",
+      "kind": "svelte.package-export",
+      "source": "fixture:packages/svelte/package.json#exports[./FixtureMissingExport]",
+      "label": "@astryxdesign/svelte export ./FixtureMissingExport"
+    }
+  ]
+}

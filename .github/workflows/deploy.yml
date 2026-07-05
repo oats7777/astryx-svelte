@@ -1,0 +1,82 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+name: Deploy
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm -F @astryxdesign/svelte-docs build
+      - run: pnpm -F @astryxdesign/svelte-storybook build
+      - run: pnpm -F @astryxdesign/example-svelte-tailwind build
+
+      - name: Assemble static site
+        run: |
+          rm -rf deploy
+          mkdir -p deploy/docs deploy/storybook deploy/example
+          cp -r apps/svelte-docs/dist/* deploy/docs/
+          cp -r apps/svelte-storybook/dist/* deploy/storybook/
+          cp -r apps/example-svelte-tailwind/dist/* deploy/example/
+          cat > deploy/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <title>Astryx Svelte</title>
+              <style>
+                body { margin: 0; font: 16px system-ui, sans-serif; background: #f7f8fa; color: #121417; }
+                main { max-width: 960px; margin: 0 auto; padding: 64px 24px; }
+                h1 { font-size: clamp(2rem, 5vw, 4rem); line-height: 1; margin: 0 0 16px; }
+                p { color: #4d5562; line-height: 1.6; }
+                nav { display: grid; gap: 12px; margin-top: 32px; }
+                a { color: inherit; padding: 16px; border: 1px solid #d8dde6; border-radius: 10px; background: white; text-decoration: none; }
+              </style>
+            </head>
+            <body>
+              <main>
+                <h1>Astryx Svelte</h1>
+                <p>Svelte 5 + Tailwind implementation of the Astryx design system.</p>
+                <nav>
+                  <a href="./docs/">Docs</a>
+                  <a href="./storybook/">Svelte Storybook</a>
+                  <a href="./example/">Example App</a>
+                </nav>
+              </main>
+            </body>
+          </html>
+          HTML
+
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: deploy
+      - uses: actions/deploy-pages@v5
+        id: deployment

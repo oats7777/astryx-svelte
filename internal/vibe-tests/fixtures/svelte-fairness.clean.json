@@ -1,0 +1,11 @@
+{
+  "tasks": [
+    {
+      "promptId": "svelte-fairness-clean",
+      "target": "astryx-svelte",
+      "prompt": "Build a compact billing summary with a total and a pay button.",
+      "expectedComponents": ["XDSCard", "XDSButton"],
+      "subagentPrompt": "You are generating Svelte component code using Astryx Svelte.\nYour project is at /Users/oats7777/project/astryx-svelte-tailwind-design-system/internal/vibe-tests/environments/project-astryx-svelte. Explore it to find available components.\nFirst read AGENTS.svelte.md in this directory for component library guidance.\n\nBuild a compact billing summary with a total and a pay button.\n\nWrite the code to: /Users/oats7777/project/astryx-svelte-tailwind-design-system/internal/vibe-tests/results/svelte-clean/results/svelte-fairness-clean.svelte"
+    }
+  ]
+}

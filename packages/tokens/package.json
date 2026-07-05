@@ -1,0 +1,53 @@
+{
+  "name": "@astryxdesign/tokens",
+  "version": "0.0.0",
+  "description": "Framework-neutral Astryx design token package.",
+  "author": "Meta Open Source",
+  "license": "MIT",
+  "homepage": "https://github.com/oats7777/astryx-svelte#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oats7777/astryx-svelte.git",
+    "directory": "packages/tokens"
+  },
+  "bugs": {
+    "url": "https://github.com/oats7777/astryx-svelte/issues"
+  },
+  "keywords": [
+    "astryx",
+    "design-system",
+    "tokens",
+    "tailwind"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./default.css": {
+      "default": "./dist/default.css"
+    },
+    "./tailwind-theme.css": {
+      "default": "./dist/tailwind-theme.css"
+    },
+    "./tokens.json": {
+      "default": "./dist/tokens.json"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.json && node scripts/build.mjs",
+    "test": "vitest run --root ../.. packages/tokens/src",
+    "typecheck": "tsc --project tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}

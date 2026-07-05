@@ -1,0 +1,98 @@
+{
+  "name": "astryx-svelte",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm build:svelte",
+    "build:svelte": "pnpm -F @astryxdesign/tokens build && pnpm -F @astryxdesign/svelte package && pnpm -F @astryxdesign/svelte-lab check && pnpm -F @astryxdesign/svelte-vega build",
+    "check:svelte": "pnpm -F @astryxdesign/svelte check && pnpm -F @astryxdesign/svelte package && pnpm -F @astryxdesign/svelte-lab check && pnpm -F @astryxdesign/svelte-vega check",
+    "check:svelte:parity": "pnpm exec tsx scripts/check-svelte-port-parity.ts --require-scope cli,tokens,svelte,lab,vega,docs,storybook,examples,vibe,ci-release --fail-on-missing --fail-on-mvp",
+    "check:package-boundaries": "node scripts/check-package-boundaries.js",
+    "check:package-boundaries:fixtures": "tmp=\"${TMPDIR:-/tmp}/astryx-svelte-lab-boundary.log\"; node scripts/check-package-boundaries.js --fixture internal/fixtures/svelte-lab-publishable.package.json > \"$tmp\" 2>&1; rc=$?; cat \"$tmp\"; grep -F \"@astryxdesign/svelte-lab must stay private/non-publishable\" \"$tmp\"; grep_rc=$?; rm -f \"$tmp\"; test \"$rc\" -ne 0 && test \"$grep_rc\" -eq 0",
+    "check:repo": "pnpm check:svelte && pnpm check:svelte:parity && pnpm check:package-boundaries && pnpm check:package-boundaries:fixtures && pnpm check:changesets && pnpm check:demo-media",
+    "check:changesets": "node scripts/check-changesets.mjs",
+    "check:demo-media": "node scripts/check-demo-media.mjs",
+    "lint": "pnpm check:repo && eslint . --cache",
+    "lint:strict": "pnpm check:repo && ASTRYX_STRICT_LINT=1 eslint . --cache",
+    "test": "pnpm -F @astryxdesign/svelte test && pnpm -F @astryxdesign/svelte-lab test && pnpm -F @astryxdesign/svelte-vega test && pnpm exec vitest run scripts/check-svelte-port-parity.test.ts",
+    "storybook": "pnpm -F @astryxdesign/svelte-storybook dev",
+    "storybook:build": "pnpm -F @astryxdesign/svelte-storybook build",
+    "docs": "pnpm -F @astryxdesign/svelte-docs dev",
+    "astryx": "pnpm -F @astryxdesign/cli astryx",
+    "changeset": "changeset",
+    "changeset:new": "node scripts/changeset-new.mjs",
+    "version-packages": "changeset version && node scripts/format-changelogs.mjs",
+    "format-changelogs": "node scripts/format-changelogs.mjs",
+    "setup-trusted-publishing": "node scripts/npm/setup-trusted-publishing.mjs",
+    "release": "pnpm build:svelte && changeset publish",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@astryxdesign/svelte": "workspace:*",
+    "@astryxdesign/tokens": "workspace:*",
+    "@axe-core/playwright": "^4.11.3",
+    "@changesets/cli": "^2.31.0",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.61.0",
+    "@testing-library/user-event": "^14.5.0",
+    "@types/node": "^25.9.3",
+    "@vitest/coverage-v8": "^2.1.0",
+    "esbuild": "^0.28.1",
+    "eslint": "^10.5.0",
+    "husky": "^9.1.7",
+    "jscodeshift": "^17.3.0",
+    "jsdom": "^27.4.0",
+    "prettier": "^3.8.4",
+    "svelte": "^5.46.0",
+    "tsup": "^8.3.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.1",
+    "vite-plugin-singlefile": "^2.3.3",
+    "vitest": "^2.1.0",
+    "tsx": "^4.22.4"
+  },
+  "packageManager": "pnpm@10.34.1",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "internal/*"
+  ],
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --fix",
+    "*.{ts,tsx,md}": "prettier --write"
+  },
+  "pnpm": {
+    "overrides": {
+      "prettier": "^3.8.4",
+      "postcss": "^8.5.10",
+      "picomatch": "^4.0.4",
+      "micromatch>picomatch": "^2.3.2",
+      "anymatch>picomatch": "^2.3.2",
+      "minimatch": "^9.0.7",
+      "dompurify": "^3.4.11",
+      "vite": "^6.4.3",
+      "tmp": ">=0.2.6",
+      "esbuild": ">=0.28.1",
+      "@babel/core": "^7.29.6",
+      "hono": "^4.12.25"
+    },
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "@swc/core",
+      "sharp",
+      "@parcel/watcher",
+      "core-js",
+      "puppeteer"
+    ]
+  },
+  "description": "Svelte 5 + Tailwind implementation of the Astryx design system, including CLI, docs metadata, examples, and AI agent support.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oats7777/astryx-svelte.git"
+  },
+  "homepage": "https://github.com/oats7777/astryx-svelte#readme",
+  "bugs": {
+    "url": "https://github.com/oats7777/astryx-svelte/issues"
+  }
+}
