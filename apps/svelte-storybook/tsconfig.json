@@ -1,0 +1,20 @@
+{
+  "extends": "../../packages/svelte/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "checkJs": false,
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "paths": {
+      "@astryxdesign/svelte": ["../../packages/svelte/src/lib/index.ts"],
+      "@astryxdesign/svelte/*": ["../../packages/svelte/src/lib/*"],
+      "@astryxdesign/svelte-lab": ["../../packages/svelte-lab/src/lib/index.ts"],
+      "@astryxdesign/svelte-lab/*": ["../../packages/svelte-lab/src/lib/*"],
+      "@astryxdesign/svelte-vega": ["../../packages/svelte-vega/src/lib/index.ts"],
+      "@astryxdesign/svelte-vega/*": ["../../packages/svelte-vega/src/lib/*"],
+      "@astryxdesign/tokens": ["../../packages/tokens/src/index.ts"]
+    },
+    "types": ["svelte"]
+  },
+  "include": ["src/**/*.svelte", "src/**/*.ts", "vite.config.ts"]
+}

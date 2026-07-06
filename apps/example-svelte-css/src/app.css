@@ -1,0 +1,147 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+
+/**
+ * @file app.css
+ * @input Astryx Svelte plain CSS entrypoint and app-local CSS classes
+ * @output Plain CSS consumer example surface without Tailwind
+ * @position CSS entrypoint for apps/example-svelte-css
+ */
+
+@import "@astryxdesign/svelte/styles.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at top right, var(--color-accent-muted), transparent 28rem),
+    var(--color-background-body);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  margin: 0;
+}
+
+.css-example-page {
+  display: grid;
+  gap: var(--spacing-6);
+  margin-inline: auto;
+  max-width: 76rem;
+  min-width: 0;
+  padding: var(--spacing-6);
+  width: 100%;
+}
+
+.css-example-hero,
+.css-example-panel,
+.css-example-sidebar,
+.css-example-stack,
+.css-example-section-heading {
+  display: grid;
+  gap: var(--spacing-4);
+  min-width: 0;
+}
+
+.css-example-hero {
+  align-items: start;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.css-example-eyebrow {
+  color: var(--color-text-accent);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+}
+
+.css-example-title {
+  margin: 0;
+  max-width: 44rem;
+}
+
+.css-example-copy {
+  color: var(--color-text-secondary);
+  line-height: var(--text-body-leading);
+  margin: 0;
+  max-width: 42rem;
+}
+
+.css-example-grid {
+  align-items: start;
+  display: grid;
+  gap: var(--spacing-5);
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+  min-width: 0;
+}
+
+.css-example-panel,
+.css-example-sidebar {
+  background: var(--color-background-card);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-container);
+  box-shadow: var(--shadow-low);
+  min-width: 0;
+  padding: var(--spacing-4);
+}
+
+.css-example-panel-header,
+.css-example-actions,
+.css-example-stat {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-3);
+}
+
+.css-example-panel-header {
+  justify-content: space-between;
+}
+
+.css-example-actions {
+  flex-wrap: wrap;
+}
+
+.css-example-stat {
+  justify-content: space-between;
+}
+
+.css-example-stat dt {
+  color: var(--color-text-secondary);
+}
+
+.css-example-stat dd {
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+}
+
+.css-example-form {
+  display: grid;
+  gap: var(--spacing-4);
+}
+
+.css-example-table {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+@media (max-width: 760px) {
+  .css-example-page {
+    padding: var(--spacing-4);
+  }
+
+  .css-example-hero,
+  .css-example-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .css-example-panel-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

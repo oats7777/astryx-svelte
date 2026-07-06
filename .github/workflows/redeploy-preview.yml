@@ -1,0 +1,19 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+name: Redeploy Preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "PR number to redeploy"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Preview redeploys are not configured for the Svelte release repo yet. Use the Deploy workflow for main."

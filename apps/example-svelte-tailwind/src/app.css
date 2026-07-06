@@ -1,0 +1,23 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+
+/**
+ * @file app.css
+ * @input Tailwind CSS v4, Astryx Svelte Tailwind styles, and app source registration directives
+ * @output Token-backed utility CSS for apps/example-svelte-tailwind
+ * @position CSS entrypoint for the Svelte Tailwind example app
+ */
+
+@import "tailwindcss";
+@import "@astryxdesign/svelte/tailwind.css";
+
+@source "./**/*.{svelte,ts}";
+
+@layer base {
+  html {
+    background: var(--color-background-body);
+  }
+
+  body {
+    margin: 0;
+  }
+}

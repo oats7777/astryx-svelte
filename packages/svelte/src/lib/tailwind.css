@@ -1,0 +1,14 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+
+/**
+ * @file tailwind.css
+ * @input Astryx Svelte CSS, Tailwind CSS v4, and package source registration
+ * @output Tailwind bridge entrypoint for @astryxdesign/svelte consumers
+ * @position Optional Tailwind CSS entrypoint layered on top of plain styles.css
+ */
+
+@import "./styles.css";
+@import "@astryxdesign/tokens/tailwind-theme.css";
+
+@source "./**/*.{svelte,ts,js}";
+@source "../src/lib/**/*.{svelte,ts,js}";

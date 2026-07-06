@@ -1,0 +1,243 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+
+/**
+ * @file app.css
+ * @input Astryx Svelte component CSS and visual storybook layout styles
+ * @output Responsive storybook surface styles backed by Astryx design tokens
+ * @position App-level CSS for @astryxdesign/svelte-storybook
+ */
+
+@import '@astryxdesign/svelte/styles.css';
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+html[data-theme='light'] {
+  color-scheme: light;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-background-body);
+  background-image:
+    radial-gradient(circle at top left, var(--color-accent-muted), transparent 34rem),
+    linear-gradient(180deg, var(--color-background-body), var(--color-background-muted));
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  margin: 0;
+}
+
+.storybook-shell {
+  display: grid;
+  gap: var(--spacing-6);
+  margin: 0 auto;
+  max-width: 76rem;
+  padding: var(--spacing-8);
+}
+
+.storybook-hero {
+  align-items: end;
+  display: grid;
+  gap: var(--spacing-5);
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding-block: var(--spacing-4);
+}
+
+.hero-copy,
+.story-panel,
+.dialog-content {
+  display: grid;
+  gap: var(--spacing-4);
+}
+
+.hero-copy {
+  max-width: 48rem;
+}
+
+.hero-actions,
+.button-row,
+.progress-row,
+.package-strip {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+}
+
+.package-strip {
+  background: var(--color-background-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-element);
+  box-shadow: var(--shadow-low);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-code);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-3);
+}
+
+.active-story {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin: calc(-1 * var(--spacing-4)) 0 0;
+}
+
+.story-grid {
+  align-items: start;
+  display: grid;
+  gap: var(--spacing-5);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.story-panel {
+  border-radius: var(--radius-element);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.story-panel--wide {
+  grid-column: 1 / -1;
+}
+
+.panel-heading {
+  align-items: start;
+  display: flex;
+  gap: var(--spacing-3);
+  justify-content: space-between;
+}
+
+.status-banner {
+  background: var(--color-success-muted);
+  border: var(--border-width) solid var(--color-success);
+  border-radius: var(--radius-element);
+  display: grid;
+  gap: var(--spacing-1);
+  padding: var(--spacing-3);
+}
+
+.status-banner span {
+  color: var(--color-text-secondary);
+}
+
+.stack-milestone-list {
+  display: grid;
+  gap: var(--spacing-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stack-milestone-list li {
+  background: var(--color-background-muted);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-inner);
+  display: grid;
+  gap: var(--spacing-1);
+  padding: var(--spacing-3);
+}
+
+.stack-milestone-list span {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.density-readout {
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-code);
+  font-size: var(--font-size-sm);
+}
+
+.astryx-chart {
+  background: var(--color-background-muted);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-element);
+  max-width: 100%;
+}
+
+.vega-frame {
+  background: var(--color-background-muted);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-element);
+  display: grid;
+  gap: var(--spacing-3);
+  min-height: 12rem;
+  overflow: hidden;
+  padding: var(--spacing-3);
+}
+
+.vega-fallback {
+  display: grid;
+  gap: var(--spacing-2);
+}
+
+.vega-fallback span {
+  background: linear-gradient(90deg, var(--color-accent) var(--bar-size), var(--color-background-surface) var(--bar-size));
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-inner);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-2);
+}
+
+.dialog-backdrop {
+  align-items: center;
+  background: var(--color-overlay);
+  display: grid;
+  inset: 0;
+  padding: var(--spacing-4);
+  position: fixed;
+  z-index: 10;
+}
+
+.dialog-content {
+  background: var(--color-background-popover);
+  border: var(--border-width) solid var(--color-border-emphasized);
+  border-radius: var(--radius-element);
+  box-shadow: var(--shadow-high);
+  max-width: 28rem;
+  padding: var(--spacing-5);
+  position: relative;
+}
+
+.dialog-close {
+  background: transparent;
+  border: 0;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font: var(--font-body);
+  position: absolute;
+  right: var(--spacing-3);
+  top: var(--spacing-3);
+}
+
+@media (max-width: 760px) {
+  .storybook-shell {
+    padding: var(--spacing-4);
+  }
+
+  .storybook-hero,
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    justify-content: start;
+  }
+
+  .story-panel--wide {
+    grid-column: auto;
+  }
+}

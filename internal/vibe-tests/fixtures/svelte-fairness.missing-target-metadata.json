@@ -1,0 +1,11 @@
+{
+  "tasks": [
+    {
+      "promptId": "svelte-fairness-missing-target-metadata",
+      "target": "astryx-svelte",
+      "prompt": "Build a compact billing summary with a total and a pay button.",
+      "expectedComponents": ["XDSCard", "XDSButton"],
+      "subagentPrompt": "Build a compact billing summary with a total and a pay button for the Astryx Svelte target."
+    }
+  ]
+}

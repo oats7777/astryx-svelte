@@ -1,0 +1,33 @@
+{
+  "name": "@astryxdesign/svelte-storybook",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Storybook-like visual surface for Astryx Svelte ports.",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite dev --host 127.0.0.1",
+    "preview": "vite preview --host 127.0.0.1",
+    "test:visual": "node scripts/test-visual.mjs",
+    "test:e2e": "node scripts/test-e2e.mjs"
+  },
+  "dependencies": {
+    "@astryxdesign/svelte": "workspace:*",
+    "@astryxdesign/svelte-lab": "workspace:*",
+    "@astryxdesign/svelte-vega": "workspace:*",
+    "@astryxdesign/tokens": "workspace:*",
+    "vega": "^6.2.0",
+    "vega-lite": "^6.4.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.0",
+    "@sveltejs/vite-plugin-svelte": "^6.0.0",
+    "sharp": "^0.34.5",
+    "svelte": "5.56.4",
+    "typescript": "^6.0.3",
+    "vite": "^6.4.3"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
+}

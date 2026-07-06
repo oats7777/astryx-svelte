@@ -1,0 +1,22 @@
+{
+  "name": "@astryxdesign/svelte-docs",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Svelte documentation workspace skeleton for Astryx.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@astryxdesign/svelte": "workspace:*",
+    "@astryxdesign/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^6.0.0",
+    "svelte": "5.56.4",
+    "typescript": "^6.0.3",
+    "vite": "^6.4.3"
+  }
+}

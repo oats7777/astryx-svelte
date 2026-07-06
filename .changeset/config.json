@@ -1,0 +1,17 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": "./changelog.cjs",
+  "commit": false,
+  "fixed": [
+    [
+      "@astryxdesign/cli",
+      "@astryxdesign/svelte",
+      "@astryxdesign/tokens"
+    ]
+  ],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": ["@astryxdesign/svelte-lab", "@astryxdesign/svelte-vega"]
+}

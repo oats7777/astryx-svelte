@@ -1,0 +1,28 @@
+{
+  "name": "@astryxdesign/example-svelte-tailwind",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Svelte and Tailwind example app for Astryx.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "check:tailwind-source": "node scripts/check-tailwind-source.mjs src/app.css",
+    "build": "pnpm run check:tailwind-source && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@astryxdesign/svelte": "workspace:*",
+    "@astryxdesign/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^6.0.0",
+    "@tailwindcss/vite": "^4",
+    "svelte": "5.56.4",
+    "tailwindcss": "^4",
+    "typescript": "^6.0.3",
+    "vite": "^6.4.3"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
+}

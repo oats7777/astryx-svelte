@@ -1,0 +1,16 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+
+@import 'tailwindcss';
+@import '@astryxdesign/svelte/tailwind.css';
+
+@source "./**/*.{svelte,ts}";
+
+@layer base {
+  html {
+    background: var(--color-background-body);
+  }
+
+  body {
+    margin: 0;
+  }
+}

@@ -1,0 +1,40 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+name: CLI Smoke Test
+
+on:
+  pull_request:
+    branches: ["main"]
+  merge_group:
+
+permissions: {}
+
+concurrency:
+  group: "cli-smoke-${{ github.event.merge_group.head_sha || github.head_ref }}"
+  cancel-in-progress: true
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build:svelte
+      - run: cd packages/cli && pnpm typecheck:json-api
+
+      - name: Svelte command smoke
+        run: |
+          node packages/cli/bin/astryx.mjs docs --json
+          node packages/cli/bin/astryx.mjs component Button --json
+          node packages/cli/bin/astryx.mjs component Button --dense
+          node packages/cli/bin/astryx.mjs docs svelte --dense
+          node packages/cli/bin/astryx.mjs template app-shell --skeleton

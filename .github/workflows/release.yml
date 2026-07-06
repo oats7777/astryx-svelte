@@ -1,0 +1,63 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+name: Release
+run-name: Release (${{ github.sha }})
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: "Build and resolve what would publish, but do not publish"
+        type: boolean
+        default: false
+
+permissions: {}
+
+jobs:
+  publish:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: npm-release-stable
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm check:repo
+
+      - name: Publish changed packages
+        env:
+          DRY_RUN: ${{ inputs.dry-run }}
+        run: |
+          set -eu
+          published=0
+          for pkg_dir in packages/*; do
+            [ -f "$pkg_dir/package.json" ] || continue
+            IS_PUBLISHABLE=$(node -p "const p=require('./$pkg_dir/package.json'); !p.private && p.name?.startsWith('@astryxdesign/') ? 'yes' : 'no'")
+            [ "$IS_PUBLISHABLE" = "yes" ] || continue
+            NAME=$(node -p "require('./$pkg_dir/package.json').name")
+            VERSION=$(node -p "require('./$pkg_dir/package.json').version")
+            if npm view "$NAME@$VERSION" version --registry https://registry.npmjs.org >/dev/null 2>&1; then
+              echo "Skipping $NAME@$VERSION (already published)"
+              continue
+            fi
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "[dry-run] Would publish $NAME@$VERSION"
+              continue
+            fi
+            pnpm publish "./$pkg_dir" --tag latest --provenance --access public --no-git-checks
+            published=$((published + 1))
+          done
+          echo "Published $published package(s)."

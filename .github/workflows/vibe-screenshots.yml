@@ -1,0 +1,34 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+name: Vibe Svelte Checks
+
+on:
+  workflow_dispatch:
+    inputs:
+      iteration:
+        description: "Optional vibe-test iteration id"
+        required: false
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  svelte-vibe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm -F @astryxdesign/vibe-tests check:fairness -- --fixture fixtures/svelte-fairness.clean.json
+
+      - name: Seed optional Svelte fixture
+        if: github.event.inputs.iteration != ''
+        run: pnpm -F @astryxdesign/vibe-tests fixture:svelte -- --iteration "${{ github.event.inputs.iteration }}"

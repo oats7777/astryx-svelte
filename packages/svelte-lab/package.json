@@ -1,0 +1,137 @@
+{
+  "name": "@astryxdesign/svelte-lab",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Private Svelte lab surfaces for Astryx experimental components.",
+  "author": "Meta Open Source",
+  "license": "MIT",
+  "type": "module",
+  "astryx": {
+    "canaryOnly": true,
+    "_comment": "Private Svelte lab package. Keep private: true as the hard guarantee against accidental stable publish; canary policy mirrors @astryxdesign/lab until an explicit release decision changes it."
+  },
+  "svelte": "./src/lib/index.ts",
+  "main": "./src/lib/index.ts",
+  "types": "./src/lib/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/lib/index.ts",
+      "svelte": "./src/lib/index.ts",
+      "default": "./src/lib/index.ts"
+    },
+    "./charts": {
+      "types": "./src/lib/charts/index.ts",
+      "svelte": "./src/lib/charts/index.ts",
+      "default": "./src/lib/charts/index.ts"
+    },
+    "./charts/*": {
+      "types": "./src/lib/charts/*",
+      "svelte": "./src/lib/charts/*",
+      "default": "./src/lib/charts/*"
+    },
+    "./chat-reasoning": {
+      "types": "./src/lib/chat-reasoning/index.ts",
+      "svelte": "./src/lib/chat-reasoning/index.ts",
+      "default": "./src/lib/chat-reasoning/index.ts"
+    },
+    "./chat-reasoning/*": {
+      "types": "./src/lib/chat-reasoning/*",
+      "svelte": "./src/lib/chat-reasoning/*",
+      "default": "./src/lib/chat-reasoning/*"
+    },
+    "./circular-progress": {
+      "types": "./src/lib/circular-progress/index.ts",
+      "svelte": "./src/lib/circular-progress/index.ts",
+      "default": "./src/lib/circular-progress/index.ts"
+    },
+    "./circular-progress/*": {
+      "types": "./src/lib/circular-progress/*",
+      "svelte": "./src/lib/circular-progress/*",
+      "default": "./src/lib/circular-progress/*"
+    },
+    "./stepper": {
+      "types": "./src/lib/stepper/index.ts",
+      "svelte": "./src/lib/stepper/index.ts",
+      "default": "./src/lib/stepper/index.ts"
+    },
+    "./stepper/*": {
+      "types": "./src/lib/stepper/*",
+      "svelte": "./src/lib/stepper/*",
+      "default": "./src/lib/stepper/*"
+    },
+    "./schedule": {
+      "types": "./src/lib/schedule/index.ts",
+      "svelte": "./src/lib/schedule/index.ts",
+      "default": "./src/lib/schedule/index.ts"
+    },
+    "./schedule/*": {
+      "types": "./src/lib/schedule/*",
+      "svelte": "./src/lib/schedule/*",
+      "default": "./src/lib/schedule/*"
+    },
+    "./code-editor": {
+      "types": "./src/lib/code-editor/index.ts",
+      "svelte": "./src/lib/code-editor/index.ts",
+      "default": "./src/lib/code-editor/index.ts"
+    },
+    "./code-editor/*": {
+      "types": "./src/lib/code-editor/*",
+      "svelte": "./src/lib/code-editor/*",
+      "default": "./src/lib/code-editor/*"
+    },
+    "./svg-icon": {
+      "types": "./src/lib/svg-icon/index.ts",
+      "svelte": "./src/lib/svg-icon/index.ts",
+      "default": "./src/lib/svg-icon/index.ts"
+    },
+    "./svg-icon/*": {
+      "types": "./src/lib/svg-icon/*",
+      "svelte": "./src/lib/svg-icon/*",
+      "default": "./src/lib/svg-icon/*"
+    },
+    "./three-d": {
+      "types": "./src/lib/three-d/index.ts",
+      "svelte": "./src/lib/three-d/index.ts",
+      "default": "./src/lib/three-d/index.ts"
+    },
+    "./three-d/*": {
+      "types": "./src/lib/three-d/*",
+      "svelte": "./src/lib/three-d/*",
+      "default": "./src/lib/three-d/*"
+    },
+    "./docs.mjs": "./docs.mjs",
+    "./groups.doc.mjs": "./groups.doc.mjs",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "typecheck:docs": "node ../../scripts/check-svelte-docs.mjs .",
+    "test": "node scripts/test.mjs"
+  },
+  "dependencies": {
+    "@astryxdesign/svelte": "workspace:*",
+    "@astryxdesign/tokens": "workspace:*",
+    "d3-scale": "^4.0.2",
+    "d3-shape": "^3.2.0"
+  },
+  "peerDependencies": {
+    "svelte": ">=5.0.0"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^6.0.0",
+    "@types/d3-scale": "^4.0.9",
+    "@types/d3-shape": "^3.1.8",
+    "svelte": "5.56.4",
+    "svelte-check": "^4.3.0",
+    "typescript": "^6.0.3"
+  },
+  "homepage": "https://github.com/oats7777/astryx-svelte#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oats7777/astryx-svelte.git",
+    "directory": "packages/svelte-lab"
+  },
+  "bugs": {
+    "url": "https://github.com/oats7777/astryx-svelte/issues"
+  }
+}
