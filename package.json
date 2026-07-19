@@ -31,26 +31,26 @@
   "devDependencies": {
     "@astryxdesign/svelte": "workspace:*",
     "@astryxdesign/tokens": "workspace:*",
-    "@axe-core/playwright": "^4.11.3",
+    "@axe-core/playwright": "^4.12.1",
     "@changesets/cli": "^2.31.0",
     "@eslint/js": "^10.0.1",
-    "@playwright/test": "^1.61.0",
+    "@playwright/test": "^1.61.1",
     "@testing-library/user-event": "^14.5.0",
     "@types/node": "^25.9.3",
     "@vitest/coverage-v8": "^2.1.0",
     "esbuild": "^0.28.1",
-    "eslint": "^10.5.0",
+    "eslint": "^10.7.0",
     "husky": "^9.1.7",
     "jscodeshift": "^17.3.0",
     "jsdom": "^27.4.0",
-    "prettier": "^3.8.4",
+    "prettier": "^3.9.5",
     "svelte": "^5.46.0",
     "tsup": "^8.3.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.61.1",
+    "typescript-eslint": "^8.63.0",
     "vite-plugin-singlefile": "^2.3.3",
     "vitest": "^2.1.0",
-    "tsx": "^4.22.4"
+    "tsx": "^4.23.0"
   },
   "packageManager": "pnpm@10.34.1",
   "workspaces": [
@@ -64,7 +64,7 @@
   },
   "pnpm": {
     "overrides": {
-      "prettier": "^3.8.4",
+      "prettier": "^3.9.5",
       "postcss": "^8.5.10",
       "picomatch": "^4.0.4",
       "micromatch>picomatch": "^2.3.2",
